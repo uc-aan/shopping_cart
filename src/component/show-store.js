@@ -68,4 +68,4 @@ const product = writable([
 ]);
 
 
-export default product;
+export default product; 

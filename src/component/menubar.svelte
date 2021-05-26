@@ -20,7 +20,7 @@
       <li style="float:right;"><i class="fa fa-user-o blue-color"></i></li>
     </ul>
 </div>
-
+ 
 <style>
     ul {
       list-style-type: none;

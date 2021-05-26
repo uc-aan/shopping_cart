@@ -36,7 +36,7 @@
 <Details {id} />
 {/if}
 
-
+ 
 <style>
     .product_list {
         display: grid;

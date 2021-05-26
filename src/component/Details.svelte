@@ -50,7 +50,7 @@
 </div>
 {/if}
 
-
+ 
 <style>
     .image {
         height: 400px;
