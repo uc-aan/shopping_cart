@@ -37,10 +37,10 @@
       display: block;
       text-align: center;
       padding: 14px 16px;
-      text-decoration: none;
     }
     li:hover {
       cursor: pointer;
+      color: rgb(113, 252, 113);
     }
     div{
         border: 2px solid black;

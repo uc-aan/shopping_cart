@@ -1,35 +1,40 @@
 <script>
-    import { onDestroy, createEventDispatcher } from 'svelte';
     import product from './show-store.js';
+    import cartItems from '../cart/cart-store.js';
 
     export let id;
-    export let title;
-    export let price;
-    export let quantity;
 
-    $:console.log('detail ',id)
+    let products;
 
-    let selectedProduct;
+    const unsubscribe = product.subscribe(prods => {
+            products = prods.find(p => p.id === id);
+        });
+    unsubscribe();
 
-    const unsubscribe = product.subscribe(items => {
-        selectedProduct = items.find(i => i.id === id );
-    });
-
-    const dispatch = createEventDispatcher();
-
-    onDestroy(() => {
-        unsubscribe();
-    });
+    function addToCart(){
+        if (products.id === id) {
+            cartItems.addItem({ 
+            id: products.id, 
+            title: products.title, 
+            details: products.details, 
+            price: products.price, 
+            image: products.image, 
+            quantity: products.quantity 
+        });
+        }
+    }
 
 </script>
 
+
+{#if products.id === id}
 <div class="container my-5">
     <div class="row">
-      <div class="col-sm-7 image" style="background-image: url({selectedProduct.image});"></div>
+      <div class="col-sm-7 image" style="background-image: url({products.image});"></div>
       <div class="col-sm-5 p-0">
-        <p class="title">{selectedProduct.title}</p>
-        <p class="price">₹{selectedProduct.price}</p>
-        <p class="detail">{selectedProduct.details}</p>
+        <p class="title">{products.title}</p>
+        <p class="price">₹{products.price}</p>
+        <p class="detail">{products.details}</p>
       </div>
     </div>
     <div class="row rowbtn">
@@ -37,18 +42,13 @@
             <button 
                 type="button" 
                 class="btn btn-primary btnAddcart"
-                on:click="{() => {
-                    dispatch('addToCart',{ 
-                        id: id,
-                        title: title,
-                        price: price,
-                        quantity: quantity
-                        })}}">
+                on:click="{addToCart}">
                 Add To Cart
             </button>
         </div>
     </div>
 </div>
+{/if}
 
 
 <style>
