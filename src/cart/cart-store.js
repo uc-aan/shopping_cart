@@ -18,4 +18,4 @@ import { writable } from 'svelte/store';
         }
     };
 
-export default customCart;
+export default customCart; 

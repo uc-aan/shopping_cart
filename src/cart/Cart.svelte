@@ -40,7 +40,7 @@
         {/each}
     </ul>
 </div>
-
+ 
 
 <style>
     .section {

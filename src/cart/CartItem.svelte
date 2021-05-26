@@ -18,7 +18,7 @@
     }else {
         total = price*quantity;
     }
-
+ 
     function removeFromCart() {
         cartItems.removeItem(id);
     }
