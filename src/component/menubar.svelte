@@ -1,8 +1,10 @@
 <script>
+  import cartItem from '../cart/cart-store.js';
   import { createEventDispatcher } from "svelte";
+  import Badge from './Badge.svelte';
 
   const dispatch = createEventDispatcher();
-
+  
   function goHome() {
     dispatch('goHomePage');
   }
@@ -14,9 +16,16 @@
 <div>
     <ul>
       <li on:click="{goHome}" ><p class="p1">Home</p></li>
-      <li><p class="p1">News</p></li>
+      <li><p class="p1">About</p></li>
       <li><p class="p1">Contact</p></li>
-      <li style="float:right; margin-right:2rem;" on:click="{goCart}"><i class="fa fa-shopping-cart"></i></li>
+      <li style="float:right; margin-right:2rem;" 
+        on:click="{goCart}">
+        <i class="fa fa-shopping-cart">
+          <sup>
+            <Badge updateItem={$cartItem.length} />
+          </sup>
+        </i>
+      </li>
       <li style="float:right;"><i class="fa fa-user-o blue-color"></i></li>
     </ul>
 </div>
@@ -57,7 +66,12 @@
     .fa-shopping-cart {
       margin-right: 2rem;
       font-size: 25px;
-      margin-top: 1rem;}
+      margin-top: 1rem;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      }
     
     
 </style>
