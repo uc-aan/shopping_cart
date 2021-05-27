@@ -1,4 +1,5 @@
 <script>
+    import { fade, fly } from 'svelte/transition';
     import product from './show-store.js';
     import cartItems from '../cart/cart-store.js';
 
@@ -30,16 +31,17 @@
 {#if products.id === id}
 <div class="container my-5">
     <div class="row">
-      <div class="col-sm-7 image" style="background-image: url({products.image});"></div>
+      <div in:fly="{{ y: 200, duration: 200 }}" out:fade class="col-sm-7 image" style="background-image: url({products.image});"></div>
       <div class="col-sm-5 p-0">
-        <p class="title">{products.title}</p>
-        <p class="price">₹{products.price}</p>
-        <p class="detail">{products.details}</p>
+        <p in:fly="{{ y: 200, duration: 500 }}" out:fade class="title">{products.title}</p>
+        <p in:fly="{{ y: 200, duration: 500 }}" out:fade class="price">₹{products.price}</p>
+        <p in:fly="{{ y: 200, duration: 500 }}" out:fade class="detail">{products.details}</p>
       </div>
     </div>
     <div class="row rowbtn">
         <div class="col-sm-12 d-flex justify-content-center my-5">
             <button 
+            in:fly="{{ y: 200, duration: 200 }}" out:fade
                 type="button" 
                 class="btn btn-primary btnAddcart"
                 on:click="{addToCart}">

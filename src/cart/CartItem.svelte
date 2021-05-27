@@ -1,4 +1,5 @@
 <script>
+    import { fade, fly, scale } from 'svelte/transition';
     import cartItems from './cart-store.js';
     import products from '../component/show-store.js';
 
@@ -24,7 +25,7 @@
     }
 </script>
 
-<div class="product">
+<div in:fade out:fly={{ y:-200 }} class="product">
     <table class="table table-striped">
         <thead class="thead-light">
           <tr>

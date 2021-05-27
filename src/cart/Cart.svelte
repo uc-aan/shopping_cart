@@ -1,4 +1,5 @@
 <script>
+    import { fade, fly, scale } from 'svelte/transition';
     import Cartitem from './CartItem.svelte';
     import cartItems from './cart-store.js';
     import { createEventDispatcher } from 'svelte';
@@ -11,10 +12,11 @@
 
 </script>
 
-<h1 class="message my-5">Your Cart</h1>
+<h1 transition:fade={{x: 300}} class="message my-5">Your Cart</h1>
 
 <div class="btn_home">
-    <button type="button" 
+    <button type="button"
+        transition:scale
         on:click="{goToShopping}"
         class="btn btn-outline-success"
         >
