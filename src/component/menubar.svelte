@@ -8,6 +8,15 @@
   function goHome() {
     dispatch('goHomePage');
   }
+
+  function goAbout() {
+    dispatch('GoAbout')
+  }
+
+  function contact() {
+    dispatch('goContact')
+  }
+
   function goCart() {
     dispatch('goCard')
   }
@@ -16,8 +25,8 @@
 <div>
     <ul>
       <li on:click="{goHome}" ><p class="p1">Home</p></li>
-      <li><p class="p1">About</p></li>
-      <li><p class="p1">Contact</p></li>
+      <li><p class="p1" on:click="{goAbout}">About</p></li>
+      <li><p class="p1" on:click="{contact}">Contact</p></li>
       <li style="float:right; margin-right:2rem;" 
         on:click="{goCart}">
         <i class="fa fa-shopping-cart">

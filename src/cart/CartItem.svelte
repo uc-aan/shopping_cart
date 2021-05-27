@@ -10,16 +10,20 @@
     export let quantity;
 
     let total = 0;
-    let qty = 0;
 
-    $: if( quantity <= 0 ){
-        cartItems.removeItem(id);
+    function QtyUp(){
+      if( quantity === '' ){
+        total = 0;
     }else if( quantity == 1 ){
         total = price*quantity;
+    }else if(quantity === 0){
+        cartItems.removeItem(id);
     }else {
         total = price*quantity;
     }
- 
+      // $cartItems.quantity = quantity;
+    }
+  
     function removeFromCart() {
         cartItems.removeItem(id);
     }
@@ -42,7 +46,7 @@
             <td><img src="{image}" alt="{title}" width=50 height=50 /> </td>
             <td>{title}<p class="text-danger" on:click="{removeFromCart}">Remove</p></td>
             <td>{price}</td>
-            <td> <input type="number" bind:value={quantity} /> </td>
+            <td> <input type="number" min="0" on:keypress="{QtyUp}" bind:value={quantity} /> </td>
             <td>{total}</td>
           </tr>
         </tbody>

@@ -9,7 +9,7 @@
 
     const unsubscribe = product.subscribe(prods => {
             products = prods.find(p => p.id === id);
-        });
+    });
     unsubscribe();
 
     function addToCart(){
@@ -60,6 +60,11 @@
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
+        transition: transform .2s;
+    }
+    .image:hover{
+        cursor: pointer;
+        transform: scale(1.1);
     }
     .title {
         font-size: 30px;
