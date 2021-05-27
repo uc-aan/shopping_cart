@@ -18,8 +18,6 @@
         id = ID;
        showDetail = true;
     }
-    // $: console.log(showDetail)
-
 </script>
 
 {#if !showDetail}
