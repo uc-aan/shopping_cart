@@ -11,6 +11,14 @@
 
     let total = 0;
 
+    $:if( quantity === '' ){
+        total = 0;
+    }else if( quantity == 1 ){
+        total = price*quantity;
+    }else {
+        total = price*quantity;
+    }
+
     function QtyUp(){
       if( quantity === '' ){
         total = 0;
