@@ -11,7 +11,7 @@ import { writable } from 'svelte/store';
                 }
                 return [...items, item]
             }); 
-        },
+        }, 
         updateItem: (item) => {
             console.log(item);
             cart.update(items => {
