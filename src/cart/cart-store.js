@@ -22,7 +22,7 @@ import { writable } from 'svelte/store';
                 }
                 return items;
             })
-        },
+        }, 
         removeItem: id => {
             cart.update(items => {
                 return items.filter(i => i.id !== id);

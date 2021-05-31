@@ -9,7 +9,7 @@
     function goToShopping(){
         dispatch('goHome');
     }
-
+ 
 </script>
 
 <h1 transition:fade={{x: 300}} class="message my-5">Your Cart</h1>

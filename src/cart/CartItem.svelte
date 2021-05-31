@@ -27,7 +27,7 @@
           total = price*selectedItems.quantity;
       }
     }
-  
+   
     function removeFromCart() {
         cartItems.removeItem(id);
     }
