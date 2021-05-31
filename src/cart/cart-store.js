@@ -12,6 +12,17 @@ import { writable } from 'svelte/store';
                 return [...items, item]
             });
         },
+        updateItem: (item) => {
+            console.log(item);
+            cart.update(items => {
+                for(var i=0; i<items.length; i++) {
+                    if (items[i].id == item.id) {
+                        items[i].quantity = item.quantity;
+                    }
+                }
+                return items;
+            })
+        },
         removeItem: id => {
             cart.update(items => {
                 return items.filter(i => i.id !== id);

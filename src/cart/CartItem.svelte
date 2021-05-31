@@ -10,22 +10,21 @@
 
     let total = price ;
 
-    // let selectedItems;
+    let selectedItems;
 
-    // const unsubscribe = cartItems.subscribe(items => {
-    //   selectedItems = items.find(i => i.id === id );
-    // });
-
-    // onDestroy(() => {
-    //     unsubscribe();
-    // });
+    const unsubscribe = cartItems.subscribe(items => {
+      selectedItems = items.find(i => i.id === id );
+    });
 
 
     function updateTotal() {
+        var item = {'id': id, 'quantity': quantity };
+        cartItems.updateItem(id);
         if (quantity <=0 ) {
           cartItems.removeItem(id);
         } else {
-          total = price*quantity;
+          console.log(selectedItems.quantity);
+          total = price*selectedItems.quantity;
       }
     }
   
