@@ -14,17 +14,20 @@
 
     const unsubscribe = cartItems.subscribe(items => {
       selectedItems = items.find(i => i.id === id );
+    if (selectedItems != undefined) {
+        total = price*selectedItems.quantity;
+    }
     });
 
 
     function updateTotal() {
-        var item = {'id': id, 'quantity': quantity };
-        cartItems.updateItem(id);
+      var item = {'id': id, 'quantity': quantity };
+      cartItems.updateItem(item);
         if (quantity <=0 ) {
           cartItems.removeItem(id);
         } else {
-          console.log(selectedItems.quantity);
-          total = price*selectedItems.quantity;
+        console.log(selectedItems.quantity);
+        total = price*selectedItems.quantity;
       }
     }
    
@@ -32,27 +35,11 @@
         cartItems.removeItem(id);
     }
 
-    // onDestroy(() => {
-    //     unsubscribe();
-    // });
 </script>
 
 <div class="product">
   
   <div class="row">
-
-    <!-- <div class="col-lg-3 col-md-3 col-12 ph">
-      Product
-    </div>
-    <div class="col-lg-3 col-md-3 col-12 ph">
-      Price
-    </div>
-    <div class="col-lg-3 col-md-3 col-12 ph">
-      Quantity
-    </div>
-    <div class="col-lg-3 col-md-3 col-12 ph">
-      Total
-    </div> -->
 
     <div class="col-lg-3 col-md-3 col-12" style="display: inline;">
       <div style="margin-top: 1rem;"><img src="{image}" alt="{title}" width=50 height=50 /></div>
@@ -82,7 +69,6 @@
 
 <style>
  .product{
-    /* background-color: red; */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -91,7 +77,6 @@
     margin-top: 0.1rem;
   }
   .row {
-    /* background-color: blue; */
     width: 90%;
     display: flex;
     justify-content: center;
@@ -100,21 +85,13 @@
     background-color: rgb(218, 220, 224);
   }
   .col-lg-3 {
-    /* background-color: blueviolet; */
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  /* .ph {
-    font-size: 15px;
-    font-weight: 500;
-    background-color: black;
-    border-left: none;
-    border-right: none;
-    color: white;
-    text-transform: uppercase;
-  } */
   .text-danger:hover {
     cursor: pointer;
   }
 </style>
+
+
