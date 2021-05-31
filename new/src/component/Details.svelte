@@ -2,45 +2,22 @@
     import { fade, fly } from 'svelte/transition';
     import product from './show-store.js';
     import cartItems from '../cart/cart-store.js';
-    import Products from './Product.svelte';
+    import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
+
 
     export let id;
 
-    // let title = '';
-    // let details = '';
-    // let price = '';
-    // let image = '';
-    // let quantity = '';
-
-//     function addToCart(){
-//     if (id) {
-// 		const unsubscribe = product.subscribe(items => {
-// 			products = items.find(i => i.id === id);
-// 			title = products.title;
-// 			details = products.details;
-// 			price = products.price;
-// 			image = products.image;
-// 			quantity = products.quantity;
-// 		});
-// 		unsubscribe();
-// 	}
-// }
-
-
-
     let products;
+
     const unsubscribe = product.subscribe(prods => {
             products = prods.find(p => p.id === id);
     });
-    
-    // unsubscribe();
+    unsubscribe();
 
     function addToCart(){
         if (products.id === id) {
-            // $cartItems = {...products};
-            // console.log(newItem);
-            // console.log(Object.entries(products));
-
             cartItems.addItem({ 
             id: products.id, 
             title: products.title, 
@@ -52,18 +29,17 @@
         }
     }
 
-    let goPro = true;
-
-    function goHome() {
-        goPro = false;
-    }
-
-    unsubscribe();
+    function sayHello() {
+        alert("hey")
+		dispatch('message', {
+			text: 'Hello!'
+		});
+	}
 
 </script>
 
 
-{#if products.id === id && goPro === true}
+{#if products.id === id}
 <div class="container my-5">
 
     <div class="row">
@@ -81,8 +57,7 @@
             in:fly="{{ y: 200, duration: 200 }}" out:fade
                 type="button" 
                 class="btn btn-primary btnAddcart"
-                on:click="{addToCart}"
-                >
+                on:click="{addToCart}">
                 Add To Cart
             </button>
         </div>
@@ -91,7 +66,7 @@
             in:fly="{{ y: 200, duration: 200 }}" out:fade
                 type="button" 
                 class="btn btn-primary btnProduct"
-                on:click="{goHome}"
+                on:click="{sayHello}"
                 >
                 Products
             </button>
@@ -99,10 +74,6 @@
     </div>
 
 </div>
-
-{:else}
-
-<Products />
 
 {/if}
 

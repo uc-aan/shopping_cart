@@ -1,4 +1,6 @@
 <script>
+import { log } from 'console';
+
     import cartItems from './cart-store.js';
 
     export let id;
@@ -8,17 +10,7 @@
     export let quantity;
 
 
-    let total = price ;
-
-    // let selectedItems;
-
-    // const unsubscribe = cartItems.subscribe(items => {
-    //   selectedItems = items.find(i => i.id === id );
-    // });
-
-    // onDestroy(() => {
-    //     unsubscribe();
-    // });
+    let total;
 
 
     function updateTotal() {
@@ -26,23 +18,20 @@
           cartItems.removeItem(id);
         } else {
           total = price*quantity;
-      }
-    }
+        }
+    } 
+
   
     function removeFromCart() {
         cartItems.removeItem(id);
     }
-
-    // onDestroy(() => {
-    //     unsubscribe();
-    // });
 </script>
 
 <div class="product">
   
   <div class="row">
 
-    <!-- <div class="col-lg-3 col-md-3 col-12 ph">
+    <div class="col-lg-3 col-md-3 col-12 ph">
       Product
     </div>
     <div class="col-lg-3 col-md-3 col-12 ph">
@@ -53,7 +42,7 @@
     </div>
     <div class="col-lg-3 col-md-3 col-12 ph">
       Total
-    </div> -->
+    </div>
 
     <div class="col-lg-3 col-md-3 col-12" style="display: inline;">
       <div style="margin-top: 1rem;"><img src="{image}" alt="{title}" width=50 height=50 /></div>
@@ -75,6 +64,7 @@
   </div>
 
   
+
 </div>
 
 
@@ -89,7 +79,6 @@
     justify-content: center;
     align-items: center;
     height: auto;
-    margin-top: 0.1rem;
   }
   .row {
     /* background-color: blue; */
@@ -106,7 +95,7 @@
     justify-content: center;
     align-items: center;
   }
-  /* .ph {
+  .ph {
     font-size: 15px;
     font-weight: 500;
     background-color: black;
@@ -114,7 +103,7 @@
     border-right: none;
     color: white;
     text-transform: uppercase;
-  } */
+  }
   .text-danger:hover {
     cursor: pointer;
   }

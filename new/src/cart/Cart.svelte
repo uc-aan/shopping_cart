@@ -27,25 +27,6 @@
 <div class="section">
     <h1 class="wishlistmsg">Your Wish List</h1>
     <hr />
-<div class="product_heading">
-    <div class="row">
-
-        <div class="col-lg-3 col-md-3 col-12 ph">
-          Product
-        </div>
-        <div class="col-lg-3 col-md-3 col-12 ph">
-          Price
-        </div>
-        <div class="col-lg-3 col-md-3 col-12 ph">
-          Quantity
-        </div>
-        <div class="col-lg-3 col-md-3 col-12 ph">
-          Total
-        </div>
-
-      </div>
-</div>
-
     <ul>
         {#each $cartItems as item (item.id) }
             <Cartitem 
@@ -64,29 +45,6 @@
  
 
 <style>
-    .product_heading {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    }
-    .row {
-    /* background-color: blue; */
-    width: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 2rem;
-    background-color: rgb(218, 220, 224);
-  }
-  .col-lg-3 {
-    /* background-color: blueviolet; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
     .section {
         width: 100%;
         margin-top: 3rem;
@@ -117,13 +75,4 @@
     p {
         margin-left: 6rem;
     }
-    .ph {
-    font-size: 15px;
-    font-weight: 500;
-    background-color: black;
-    border-left: none;
-    border-right: none;
-    color: white;
-    text-transform: uppercase;
-  }
 </style>

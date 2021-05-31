@@ -4,7 +4,7 @@
   import Cart from './cart/Cart.svelte';
   import Aboutpage from './component/Aboutpage.svelte';
   import Contact from './component/Contact.svelte';
-  
+  import Details from './component/Details.svelte';
 
   let start = true;
   let goCartsec = false;
@@ -38,6 +38,10 @@
     start = true;
     goCartsec = false;
   }
+
+  function handleMessage(event) {
+		alert(event.detail.text);
+	}
   
 </script>
 

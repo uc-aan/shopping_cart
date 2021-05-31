@@ -67,36 +67,5 @@ const product = writable([
     },
 ]);
 
+
 export default product; 
-
-
-
-// const customItemStore = {
-//     subscribe: product.subscribe,
-//     addItem: (itemData) => {
-//         const newItems = {
-//             ...itemData,
-//             id: Math.random().toString(),
-//         };
-//         product.update(items => {
-//             return [newItems, ...items];
-//         });
-//     },
-//     updateItem: (id, itemData) => {
-//         product.update(items => {
-//             const itemIndex = items.findIndex(i => i.id === id);
-//             const updatedItem = {...items[itemIndex], ...itemData};
-//             const updatedItems = [...items];
-//             updatedItems[itemIndex] = updatedItem;
-//             console.log(updatedItems, id);
-//             return updatedItems;
-//         });
-//     },
-//     removeItem: (id) => {
-//         product.update(items => {
-//             return items.filter(i => i.id !== id);
-//         });
-//     },
-// };
-
-// export default customItemStore;
