@@ -10,7 +10,7 @@ import { writable } from 'svelte/store';
                     return [...items];
                 }
                 return [...items, item]
-            });
+            }); 
         },
         updateItem: (item) => {
             console.log(item);
